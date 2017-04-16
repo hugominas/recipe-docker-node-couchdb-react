@@ -1,10 +1,10 @@
 # production dockerfile
 FROM node:latest
 
-WORKDIR /backend
+WORKDIR /frontend
 
 # add code
-COPY . /backend
+COPY . /frontend
 
 #install deps, build, remove initial sources, dev deps
 RUN npm i -q
