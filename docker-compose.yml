@@ -1,24 +1,7 @@
-api:
-  image: "node:latest"
-  volumes:
-    - "./backend:/home/api"
-  ports:
-    - "3000:3000"
-  environment:
-    NODE_ENV: production
-  links:
-    - couchdb
-frontend:
-  build: "./frontend"
-  volumes:
-    - ".:/home/frontend"
-  ports:
-    - "80:8888"
-  environment:
-    NODE_ENV: production
-  links:
-    - api
-couchdb:
-  image: "klaemo/couchdb:latest"
-  ports:
-    - "5984:5984"
+version: '2'
+services:
+    db:
+        image: "frodenas/couchdb:latest"
+        environment:
+          COUCHDB_USERNAME: "couchdb"
+          COUCHDB_PASSWORD: "jPp5fBJySeuJPTN8"

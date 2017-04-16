@@ -1,0 +1,21 @@
+version: '2'
+services:
+    backend:
+        build:
+            context: ./backend
+        environment:
+            NODE_ENV: production
+        depends_on:
+            - db
+    nginx:
+        build:
+            context: ./
+            dockerfile: ./nginx/Dockerfile
+        depends_on:
+            - backend
+        volumes: 
+            - "./backend/media:/media"
+            - "./logs/nginx:/tmp/logs"
+        ports:
+            - "80:80"
+            - "443:443"
